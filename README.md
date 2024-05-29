@@ -36,3 +36,10 @@ Several visualizations were created to understand the data better:
 - Distribution of Order Value: Histogram or density plot showing the distribution of total order values.
 - Quantity Ordered by Customer: Histogram showing the distribution of quantities purchased by customers.
 - Average Order Value by Country: Bar chart displaying the average order value for each country.
+
+## K-Means Clustering
+1. Feature Selection: Selected features relevant to customer segmentation, such as TotalSpent, Quantity, and OrderFrequency.
+2. Scaling: Standardized the features to ensure fair clustering.
+3. Optimal Number of Clusters: Determined the optimal number of clusters using the Elbow Method and Silhouette Score.
+4. Model Implementation: Applied the K-Means algorithm to segment the customers.
+5. Cluster Analysis: Analyzed the characteristics of each cluster to understand customer segments.
