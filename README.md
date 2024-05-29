@@ -1,7 +1,7 @@
 # Customer-Segmentation-Project
 Customer Segmentation using K-mean Cluster Algorithm 
 
-To visualize it Please visit /kmean_algo 
+To visualize it Please visit  [Flask App](https://github.com/pragyanshu-panda-au26/Customer-Segmentation-Project/tree/801fca67461ccb6afa69573e9c9eb7270b4955f5/kmean_algo)
 
 Overview
 This project implements a customer segmentation model using the K-Means clustering algorithm on an online retail dataset. Customer segmentation is a powerful marketing tool that divides a customer base into groups of individuals with similar characteristics. This enables businesses to tailor their marketing strategies, enhance customer satisfaction, and improve overall business performance.
