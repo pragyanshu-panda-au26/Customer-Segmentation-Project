@@ -43,3 +43,10 @@ Several visualizations were created to understand the data better:
 3. Optimal Number of Clusters: Determined the optimal number of clusters using the Elbow Method and Silhouette Score.
 4. Model Implementation: Applied the K-Means algorithm to segment the customers.
 5. Cluster Analysis: Analyzed the characteristics of each cluster to understand customer segments.
+
+## Results and Visualization
+Visualizations were created to interpret the clustering results, including:
+
+- Cluster Centers: Visual representation of the cluster centroids.
+- Cluster Distribution: Bar chart showing the number of customers in each cluster.
+- Cluster Characteristics: Summary statistics and profiles for each cluster.
