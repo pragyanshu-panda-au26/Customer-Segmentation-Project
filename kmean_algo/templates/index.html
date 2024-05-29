@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Segmentation Model</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-color:darkorchid;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: greenyellow;
+        }
+        form {
+            text-align: center;
+        }
+        input[type="file"] {
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color:darkviolet;
+            color: greenyellow;
+        }
+        .result-img {
+            display: flex;
+            justify-content: space-evenly;
+            margin-left: 25%;
+            margin-top: 20px;
+        }
+        .result-img img {
+            max-width: 300px;
+            margin-right: 10px;
+        }
+
+        #myVideo {
+            position: fixed;
+            right: 10%;
+            bottom: 0;
+            top:10%;
+            min-width: 40%;
+            min-height: 40%;
+        }
+
+        .content {
+            position: fixed;
+            bottom: 0;
+            background: rgba(15, 15, 15, 0.5);
+            color: #f1f1f1;
+            width: 100%;
+            padding: 20px;
+            right: 10%;
+        }
+
+        /* Loader styles */
+        .loader {
+            display: none; /* Hidden by default */
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            width: 50px;
+            height: 50px;
+            background-color: #007bff;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="myVideo">
+        <source src="https://cdn.dribbble.com/userupload/11797924/file/original-fca8757b4c27c82cff3d9665aebad4b3.mp4" type="video/mp4">
+    </video>
+    <div class="container">
+        <div class="content">
+            <h1>Customer Segmentation</h1>
+            <form id="upload-form" enctype="multipart/form-data">
+                <input type="file" name="file" id="file-upload" accept=".csv">
+                <button type="submit">Upload CSV File</button>
+            </form>
+            <div class="result-img" id="results">
+                <!-- Images will be displayed here -->
+            </div>
+            <div id="download-link">
+                <!-- Download link will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader"></div>
+
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var form = event.target;
+            var formData = new FormData(form);
+
+            // Show loader
+            var loader = document.getElementById('loader');
+            loader.style.display = 'block';
+
+            // Initialize XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/predict');
+            xhr.onload = function() {
+                // Hide loader
+                loader.style.display = 'none';
+
+                if (xhr.responseText) {
+                    var response = JSON.parse(xhr.responseText);
+                    displayImages(response);
+                    addDownloadLink(response.excel_file);
+                } else {
+                    console.error('Empty response received');
+                }
+            };
+            xhr.send(formData);
+        });
+
+        function displayImages(response) {
+            var resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+            for (var key in response) {
+                if (response.hasOwnProperty(key) && key !== 'excel_file') {
+                    var img = document.createElement('img');
+                    img.src = response[key];
+                    resultsDiv.appendChild(img);
+                }
+            }
+        }
+
+        function addDownloadLink(filePath) {
+            var downloadDiv = document.getElementById('download-link');
+            downloadDiv.innerHTML = '';
+            var link = document.createElement('a');
+            link.href = '/download_excel?file=' + encodeURIComponent(filePath);
+            link.textContent = 'Download Cluster Data';
+            link.style.padding = '10px 20px';
+            link.style.marginLeft='50%'
+            link.style.backgroundColor = '#007bff';
+            link.style.color = '#fff';
+            link.style.borderRadius = '5px';
+            downloadDiv.appendChild(link);
+        }
+    </script>
+</body>
+</html>
