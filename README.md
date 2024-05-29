@@ -26,3 +26,13 @@ The dataset used in this project contains transaction data from an online retail
 1. Handling Missing Values: Remove rows with missing CustomerID as they are essential for customer segmentation.
 2. Removing Duplicates: Eliminate duplicate entries to ensure data quality.
 3. Feature Engineering: Create new features such as TotalSpent (Quantity * UnitPrice) and aggregate data at the customer level.
+
+## Exploratory Data Analysis (EDA)
+Several visualizations were created to understand the data better:
+
+- Top Selling Products: Bar chart showing the most frequently purchased products.
+- Sales by Country: Bar chart illustrating total sales per country.
+- Number of Orders per Customer: Histogram showing the distribution of order counts among customers.
+- Distribution of Order Value: Histogram or density plot showing the distribution of total order values.
+- Quantity Ordered by Customer: Histogram showing the distribution of quantities purchased by customers.
+- Average Order Value by Country: Bar chart displaying the average order value for each country.
