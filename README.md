@@ -15,3 +15,9 @@ The dataset used in this project contains transaction data from an online retail
 - UnitPrice: Price per unit of the product
 - CustomerID: Unique identifier for each customer
 - Country: Country where the customer resides
+
+Objectives
+1. Preprocess the data to handle missing values, duplicate entries, and data transformations.
+2. Perform Exploratory Data Analysis (EDA) to gain insights into customer behavior.
+3. Implement K-Means clustering to segment customers based on their purchasing patterns.
+4. Visualize the clustering results and interpret the customer segments.
